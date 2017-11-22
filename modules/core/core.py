@@ -55,6 +55,8 @@ class ActorAPI(object):
         actor = self.cache.get("actors").get(id)
 
         if actor.state == 1:
+            if power is not None:
+                self.actor_power(id, power)
             return
 
         actor.instance.on(power=power)
